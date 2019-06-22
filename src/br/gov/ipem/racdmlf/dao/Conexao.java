@@ -31,7 +31,11 @@ public class Conexao {
         	Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/racxml?useTimezone=true&serverTimezone=UTC", "sandro", "1234");
             st = con.createStatement();
+           // String q = "SELECT * FROM afericaoequipamento WHERE data  BETWEEN ('2019-05-01') AND ('2019-10-13')";
+     
             return st;
+            
+            
             
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possivel realizar a conexão com o banco de dados.");

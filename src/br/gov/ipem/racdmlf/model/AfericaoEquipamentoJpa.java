@@ -1,73 +1,33 @@
 package br.gov.ipem.racdmlf.model;
 
-
-
-
-
 import java.util.Date;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.Type;
-
-@Entity
-@Table(name="afericaoequipamento")
-
-public class AfericaoEquipamento {
+public class AfericaoEquipamentoJpa {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int id;
 	
-	@Column(name = "`data`")
-	@Temporal(TemporalType.DATE)
-	private Date data;
-	
-	@Column
+	private String data;
 	private String tipoServico;
-	@Column
 	private String municipio;
-	@Column
 	private Integer servico;
-	@Column
 	private String descricao;
-	//@Column
-	//private Funcionario funcionario;
-	//@Column
-	//private Funcionario funcionarioAux;
-	@Column
+	private Funcionario funcionario;
+	private Funcionario funcionarioAux;
 	private String regional;
-	@Column
 	private String divisao;
-	@Column
 	private String tipoBalanca;
-	@Column
 	private String dataRelatorioDiario;
-	@Column
 	private Integer quantEfetiva;
-	@Column
 	private Double valorEfetvo;
-	@Column
 	private Integer quantidadeAprovada;
-	@Column
 	private Integer quantidadeReprovada;
-	@Column
 	private Double valorTotal;
-
-
-	public Date getData() {
+	
+	
+	public String getData() {
 		return data;
 	}
-	public void setData(Date date) {
-		this.data = date;
+	public void setData(String data) {
+		this.data = data;
 	}
 	public String getTipoServico() {
 		return tipoServico;
@@ -93,22 +53,18 @@ public class AfericaoEquipamento {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-//	public Funcionario getFuncionario() {
-//		return funcionario;
-//	}
-	
-
-	
-	public void setFuncionario(Funcionario funcionario) {
-	//	this.funcionario = funcionario;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
-//	public Funcionario getFuncionarioAux() {
-	//	return funcionarioAux;
-//	}
-	//public void setFuncionarioAux(Funcionario funcionarioAux) {
-	//	this.funcionarioAux = funcionarioAux;
-//	}
-	
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+	public Funcionario getFuncionarioAux() {
+		return funcionarioAux;
+	}
+	public void setFuncionarioAux(Funcionario funcionarioAux) {
+		this.funcionarioAux = funcionarioAux;
+	}
 	public String getRegional() {
 		return regional;
 	}
@@ -163,7 +119,6 @@ public class AfericaoEquipamento {
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-
 	
 	
 	

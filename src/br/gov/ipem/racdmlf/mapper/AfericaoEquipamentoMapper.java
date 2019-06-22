@@ -1,5 +1,9 @@
 package br.gov.ipem.racdmlf.mapper;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
@@ -19,8 +23,10 @@ public class AfericaoEquipamentoMapper {
 		AfericaoEquipamento afericaoEquipamento = new AfericaoEquipamento();
 		
 		try {
-				
-			afericaoEquipamento.setData(row.getElementsByTagName("DATA").item(0).getTextContent());
+			//afericaoEquipamento.setData(row.getElementsByTagName("DATA").item(0).getTextContent());
+			
+			
+			afericaoEquipamento.setData((Date) new SimpleDateFormat("yyyy-dd-MM").parse(row.getElementsByTagName("DATA").item(0).getTextContent()));
 			afericaoEquipamento.setTipoServico(row.getElementsByTagName("TIPO_SERVICO").item(0).getTextContent());
 			afericaoEquipamento.setMunicipio(row.getElementsByTagName("MUNICIPIO").item(0).getTextContent());
 			afericaoEquipamento.setServico(Integer.valueOf(row.getElementsByTagName("SERVIÇO").item(0).getTextContent().trim()));
@@ -36,7 +42,7 @@ public class AfericaoEquipamentoMapper {
 			afericaoEquipamento.setQuantidadeReprovada(Integer.valueOf(row.getElementsByTagName("QTDE_REPROVADA").item(0).getTextContent().trim()));
 			afericaoEquipamento.setValorTotal(Double.valueOf(row.getElementsByTagName("VALOR_TOTAL").item(0).getTextContent().trim()));
 			
-			afericaoEquipamento.setFuncionario(
+	/*		afericaoEquipamento.setFuncionario(
 					new Funcionario(
 							Integer.valueOf(
 								row.getElementsByTagName("CD_FUNCIONARIO")
@@ -61,9 +67,10 @@ public class AfericaoEquipamentoMapper {
 						row.getElementsByTagName("NO_FUNCIONARIO_AUX")
 						.item(0)
 						.getTextContent()));
+						*/
 		} catch (Exception e) {
 			afericaoEquipamento.setDescricao("Erro" + e.getMessage());
-		}
+		} 
 		
 		
 		
