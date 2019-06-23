@@ -2,6 +2,7 @@ package br.gov.ipem.racdmlf.mapper;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -24,7 +25,7 @@ public class AfericaoEquipamentoMapperTest {
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document doc = builder.parse(mockXml());
+		Document doc = builder.parse("C:\\Temp\\ProdTest.xml");
 		
 		NodeList lista = doc.getElementsByTagName("G_CFI_CD_CLASSIF_ITEM");
 		AfericaoEquipamento afericaoEquipamento = AfericaoEquipamentoMapper.from((Element) lista.item(0));
