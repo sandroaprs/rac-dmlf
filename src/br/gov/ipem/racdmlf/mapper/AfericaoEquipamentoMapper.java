@@ -1,14 +1,10 @@
 package br.gov.ipem.racdmlf.mapper;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 
 import br.gov.ipem.racdmlf.model.AfericaoEquipamento;
-import br.gov.ipem.racdmlf.model.Funcionario;
+import br.gov.ipem.racdmlf.util.ConverterDataUtil;
 
 public class AfericaoEquipamentoMapper {
 	
@@ -16,22 +12,28 @@ public class AfericaoEquipamentoMapper {
 				
 	}
 	
-	
-
 	public static AfericaoEquipamento from(Element row){
 		
 		AfericaoEquipamento afericaoEquipamento = new AfericaoEquipamento();
-		
+
+		// ConverterDataUtil cd = new ConverterDataUtil();
+
 		try {
-			//afericaoEquipamento.setData(row.getElementsByTagName("DATA").item(0).getTextContent());
-			
-			
-			afericaoEquipamento.setData((Date) new SimpleDateFormat("yyyy-dd-MM").parse(row.getElementsByTagName("DATA").item(0).getTextContent()));
+		
+			afericaoEquipamento.setData(ConverterDataUtil.parseData(row.getElementsByTagName("DATA").item(0).getTextContent()));
+
 			afericaoEquipamento.setTipoServico(row.getElementsByTagName("TIPO_SERVICO").item(0).getTextContent());
 			afericaoEquipamento.setMunicipio(row.getElementsByTagName("MUNICIPIO").item(0).getTextContent());
 			afericaoEquipamento.setServico(Integer.valueOf(row.getElementsByTagName("SERVIÇO").item(0).getTextContent().trim()));
-			afericaoEquipamento.setDescricao(row.getElementsByTagName("DESCRICAO").item(0).getTextContent());
-			//afericaoEquipamento.(row.getElementsByTagName("CD_FUNCIONARIO").item(0).getTextContent());
+			afericaoEquipamento.setDescricao(row.getElementsByTagName("DESCRICAO").item(0).getTextContent());	
+			
+			afericaoEquipamento.setCd_funcionario(Integer.valueOf(row.getElementsByTagName("CD_FUNCIONARIO").item(0).getTextContent()));
+			afericaoEquipamento.setFuncionario(row.getElementsByTagName("FUNCIONARIO").item(0).getTextContent());	
+			
+			afericaoEquipamento.setCd_Funcionario_Aux(Integer.valueOf(row.getElementsByTagName("CD_FUNCIONARIO_AUX").item(0).getTextContent()));
+			afericaoEquipamento.setFuncionario_Aux(row.getElementsByTagName("NO_FUNCIONARIO_AUX").item(0).getTextContent());	
+			
+			
 			afericaoEquipamento.setRegional(row.getElementsByTagName("REGIONAL").item(0).getTextContent());
 			afericaoEquipamento.setDivisao(row.getElementsByTagName("DIVISAO").item(0).getTextContent());
 			afericaoEquipamento.setTipoBalanca(row.getElementsByTagName("TP_BALANCA").item(0).getTextContent());
@@ -42,32 +44,7 @@ public class AfericaoEquipamentoMapper {
 			afericaoEquipamento.setQuantidadeReprovada(Integer.valueOf(row.getElementsByTagName("QTDE_REPROVADA").item(0).getTextContent().trim()));
 			afericaoEquipamento.setValorTotal(Double.valueOf(row.getElementsByTagName("VALOR_TOTAL").item(0).getTextContent().trim()));
 			
-	/*		afericaoEquipamento.setFuncionario(
-					new Funcionario(
-							Integer.valueOf(
-								row.getElementsByTagName("CD_FUNCIONARIO")
-								.item(0)
-								.getTextContent()
-								.trim()
-							)
-						, 
-						row.getElementsByTagName("FUNCIONARIO")
-						.item(0)
-						.getTextContent()));
-			
-			afericaoEquipamento.setFuncionarioAux(
-					new Funcionario(
-							Integer.valueOf(
-								row.getElementsByTagName("CD_FUNCIONARIO_AUX")
-								.item(0)
-								.getTextContent()
-								.trim()
-							)
-						, 
-						row.getElementsByTagName("NO_FUNCIONARIO_AUX")
-						.item(0)
-						.getTextContent()));
-						*/
+						
 		} catch (Exception e) {
 			afericaoEquipamento.setDescricao("Erro" + e.getMessage());
 		} 

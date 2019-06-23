@@ -27,7 +27,7 @@ public class AfericaoEquipamento {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id;
 	
-	@Column(name = "`data`")
+	@Column//(name = "`data`")
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	
@@ -39,11 +39,26 @@ public class AfericaoEquipamento {
 	private Integer servico;
 	@Column
 	private String descricao;
-	//@Column
-	//private Funcionario funcionario;
-	//@Column
-	//private Funcionario funcionarioAux;
+	
 	@Column
+	private Integer cd_funcionario;
+	
+	@Column
+	private String funcionario;
+	
+	
+	@Column
+	private Integer cd_Funcionario_Aux;
+	
+	@Column
+	private String funcionario_Aux;
+	
+	
+	
+	//private Funcionario funcionarioC;
+	
+	// private Funcionario funcionarioAuxC;
+
 	private String regional;
 	@Column
 	private String divisao;
@@ -61,13 +76,17 @@ public class AfericaoEquipamento {
 	private Integer quantidadeReprovada;
 	@Column
 	private Double valorTotal;
-
-
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Date getData() {
 		return data;
 	}
-	public void setData(Date date) {
-		this.data = date;
+	public void setData(Date data) {
+		this.data = data;
 	}
 	public String getTipoServico() {
 		return tipoServico;
@@ -93,22 +112,30 @@ public class AfericaoEquipamento {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-//	public Funcionario getFuncionario() {
-//		return funcionario;
-//	}
-	
-
-	
-	public void setFuncionario(Funcionario funcionario) {
-	//	this.funcionario = funcionario;
+	public Integer getCd_funcionario() {
+		return cd_funcionario;
 	}
-//	public Funcionario getFuncionarioAux() {
-	//	return funcionarioAux;
-//	}
-	//public void setFuncionarioAux(Funcionario funcionarioAux) {
-	//	this.funcionarioAux = funcionarioAux;
-//	}
-	
+	public void setCd_funcionario(Integer cd_funcionario) {
+		this.cd_funcionario = cd_funcionario;
+	}
+	public String getFuncionario() {
+		return funcionario;
+	}
+	public void setFuncionario(String funcionario) {
+		this.funcionario = funcionario;
+	}
+	public Integer getCd_Funcionario_Aux() {
+		return cd_Funcionario_Aux;
+	}
+	public void setCd_Funcionario_Aux(Integer cd_Funcionario_Aux) {
+		this.cd_Funcionario_Aux = cd_Funcionario_Aux;
+	}
+	public String getFuncionario_Aux() {
+		return funcionario_Aux;
+	}
+	public void setFuncionario_Aux(String funcionario_Aux) {
+		this.funcionario_Aux = funcionario_Aux;
+	}
 	public String getRegional() {
 		return regional;
 	}
@@ -164,7 +191,8 @@ public class AfericaoEquipamento {
 		this.valorTotal = valorTotal;
 	}
 
-	
+
+
 	
 	
 	
