@@ -18,7 +18,12 @@ public class ConexaoMysql {
     
    public static String status = "Não conectou ao Servidor...";
  
-
+//Método Construtor da Classe//
+ 
+        public ConexaoMysql() {
+ 
+    }
+ 
   
  
 //Método de Conexão//
