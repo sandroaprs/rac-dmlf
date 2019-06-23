@@ -23,7 +23,6 @@ public class FrmInicial extends javax.swing.JFrame {
     public FrmInicial() {
         initComponents();
         
-        // Centralizar o Form
         this.setLocationRelativeTo(null);
     }
 
